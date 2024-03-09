@@ -26,7 +26,7 @@ const Page = () => {
         push('/');
     };
 
-    const onDragEnd = async (result) => {
+    const onDragEnd = async (result:any) => {
         // If dropped outside the list
         if (!result.destination) {
             return;
@@ -66,7 +66,7 @@ const Page = () => {
         const newTitle = prompt("Enter task title:");
         const newDescription = prompt("Enter task description:");
         const newDueDate = prompt("Enter due date (YYYY-MM-DD):");
-        const newTags = prompt("Enter tags (comma-separated):").split(',');
+        const newTags = prompt("Enter tags (comma-separated):")!.split(',');
         const newChecklistItem = prompt("Enter checklist item:");
         const newAttachmentLink = prompt("Enter attachment link:");
         const newAttachmentDisplayText = prompt("Enter attachment display text:");
@@ -101,7 +101,7 @@ const Page = () => {
         }
       };  
 
-    const handleStatus = async (taskId, newStatus) => {
+    const handleStatus = async (taskId:any, newStatus:any) => {
       try {
         const response = await fetch(`https://oprec-api.labse.in/api/task/${taskId}`, {
             method: 'PUT',
@@ -124,7 +124,7 @@ const Page = () => {
     }
     };
 
-    const handleEditTitle = async (taskId, newTitle) => {
+    const handleEditTitle = async (taskId:any, newTitle:any) => {
       try {
         const response = await fetch(`https://oprec-api.labse.in/api/task/${taskId}`, {
             method: 'PUT',
@@ -147,7 +147,7 @@ const Page = () => {
     }
     };
 
-    const handleEditDesc = async (taskId, newdesc) => {
+    const handleEditDesc = async (taskId:any, newdesc:any) => {
       try {
         const response = await fetch(`https://oprec-api.labse.in/api/task/${taskId}`, {
             method: 'PUT',
@@ -170,7 +170,7 @@ const Page = () => {
     }
     };
 
-    const handleDelete = async (taskId) => {
+    const handleDelete = async (taskId:any) => {
       try {
         const response = await fetch(`https://oprec-api.labse.in/api/task/${taskId}`, {
             method: 'DELETE',
@@ -189,7 +189,7 @@ const Page = () => {
     }
     };
 
-    const handleDeletedTask = async (taskId) => {
+    const handleDeletedTask = async (taskId:any) => {
       try {
         const response = await fetch(`https://oprec-api.labse.in/api/task/${taskId}`, {
             method: 'PUT',
@@ -274,11 +274,11 @@ const Page = () => {
                         <div key={status} className="flex-1 md:max-w-xs mx-4 md:mx-0 mb-4 md:mb-0">
                             <h2 className="text-lg font-semibold mb-4 text-center md:text-left text-slate-900">{status}</h2>
                             <Droppable droppableId={status}>
-                                {(provided) => (
+                                {(provided:any) => (
                                     <div ref={provided.innerRef} {...provided.droppableProps}>
-                                        {groupedTasks[status].map((task, index) => (
+                                        {groupedTasks[status].map((task:any, index:any) => (
                                             <Draggable key={task._id} draggableId={task._id} index={index}>
-                                                {(provided) => (
+                                                {(provided:any) => (
                                                     <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                                         <div key={task._id} className="p-4 border-b border-gray-200">
                                                             <div className='flex flex-row justify-between'>
